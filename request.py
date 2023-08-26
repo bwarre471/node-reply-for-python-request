@@ -19,23 +19,20 @@ message = 'Hello from the client!'
 client.sendall(message.encode())
 
 # Receive a response from the server
-
+rcvWindow = 1024
 whole = bytearray()
 with client:
         done=False
         while not done:
-            data = client.recv(1024)
+            data = client.recv(rcvWindow)
             whole.extend(data)
-            if len(data)!=1024:
+            if len(data)!=rcvWindow:
                 done = True
+                client.close()
                 break
         message = whole.split(b"\n")
-        print(message)
-        data = struct.unpack('>3d', message[2])
-        print(data)
-        print(message)
-print(whole)
-print('done')
+        unpackParameter = message[0].decode()
+        data = struct.unpack(unpackParameter, message[1])
 
-# Close the connection
-client.close()
+print(data)
+print('done')
