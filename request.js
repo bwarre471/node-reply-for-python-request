@@ -1,6 +1,6 @@
 let fs = require('fs')
 let config = {
-        unixSocket: fs.readFileSync('.unixSocketAddress').toString()
+        unixSocket: fs.readFileSync('x.unixSocketAddress').toString()
 }
 
 

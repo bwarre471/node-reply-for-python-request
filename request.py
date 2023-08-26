@@ -2,7 +2,7 @@ import socket
 import os
 import struct
 # Get unix socket address
-f = open('.unixSocketAddress', 'r')
+f = open('x.unixSocketAddress', 'r')
 path = f.read()
 f.close()
 # Set the path for the Unix socket
